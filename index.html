@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-1">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Huit Américain — Multi-Theme Edition (Cloud)</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Huit Américain">
+
+  <!-- PWA Manifest & Theme -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       DÉFINITION DES 6 THÈMES (VARIABLES CSS)
+       ========================================== */
+    body.theme-1 {
+      --bg-main: #f8f9fa;
+      --card-bg: #ffffff;
+      --card-border: #e5e7eb;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --btn-primary-bg: #000000;
+      --btn-primary-color: #ffffff;
+      --btn-primary-shadow: rgba(0, 0, 0, 0.15);
+      --btn-secondary-bg: #e5e7eb;
+      --btn-secondary-color: #111827;
+      --accent-green: #10b981;
+      --accent-danger: #ef4444;
+      --accent-blue: #3b82f6;
+    }
+
+    body.theme-2 {
+      --bg-main: #09090b;
+      --card-bg: #18181b;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --btn-primary-bg: #f4f4f5;
+      --btn-primary-color: #09090b;
+      --btn-primary-shadow: rgba(244, 244, 245, 0.15);
+      --btn-secondary-bg: #27272a;
+      --btn-secondary-color: #f4f4f5;
+      --accent-green: #22c55e;
+      --accent-danger: #f43f5e;
+      --accent-blue: #60a5fa;
+    }
+
+    body.theme-3 {
+      --bg-main: #f4fbf7;
+      --card-bg: #ffffff;
+      --card-border: #d1fae5;
+      --text-main: #064e3b;
+      --text-muted: #047857;
+      --btn-primary-bg: #059669;
+      --btn-primary-color: #ffffff;
+      --btn-primary-shadow: rgba(5, 150, 105, 0.25);
+      --btn-secondary-bg: #e6f4ea;
+      --btn-secondary-color: #064e3b;
+      --accent-green: #10b981;
+      --accent-danger: #dc2626;
+      --accent-blue: #0284c7;
+    }
+
+    body.theme-4 {
+      --bg-main: #121212;
+      --card-bg: #1e1e1e;
+      --card-border: rgba(245, 158, 11, 0.15);
+      --text-main: #fafafa;
+      --text-muted: #a3a3a3;
+      --btn-primary-bg: #f59e0b;
+      --btn-primary-color: #121212;
+      --btn-primary-shadow: rgba(245, 158, 11, 0.25);
+      --btn-secondary-bg: #2a2a2a;
+      --btn-secondary-color: #fafafa;
+      --accent-green: #10b981;
+      --accent-danger: #ef4444;
+      --accent-blue: #3b82f6;
+    }
+
+    body.theme-5 {
+      --bg-main: #faf5ff;
+      --card-bg: #ffffff;
+      --card-border: #e9d5ff;
+      --text-main: #2e1065;
+      --text-muted: #6b21a8;
+      --btn-primary-bg: #7c3aed;
+      --btn-primary-color: #ffffff;
+      --btn-primary-shadow: rgba(124, 58, 237, 0.25);
+      --btn-secondary-bg: #f3e8ff;
+      --btn-secondary-color: #2e1065;
+      --accent-green: #059669;
+      --accent-danger: #dc2626;
+      --accent-blue: #2563eb;
+    }
+
+    body.theme-6 {
+      --bg-main: #fffbeb;
+      --card-bg: #ffffff;
+      --card-border: #fde68a;
+      --text-main: #292524;
+      --text-muted: #78716c;
+      --btn-primary-bg: #ea580c;
+      --btn-primary-color: #ffffff;
+      --btn-primary-shadow: rgba(234, 88, 12, 0.25);
+      --btn-secondary-bg: #fef3c7;
+      --btn-secondary-color: #292524;
+      --accent-green: #16a34a;
+      --accent-danger: #b91c1c;
+      --accent-blue: #0284c7;
+    }
+
+    /* ==========================================
+       STYLES GÉNÉRAUX DE L'APPLICATION
+       ========================================== */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      margin: 0;
+      padding: 20px 15px 40px;
+      min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .app-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .app-title {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .top-actions-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-top-action {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn-top-action:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .theme-selector-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .theme-selector-container label {
+      font-size: 12px;
+      margin: 0;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .theme-select {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .theme-select option {
+      background: var(--card-bg);
+      color: var(--text-main);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 0;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--bg-main);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: var(--text-main);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus, select:focus {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .row-input {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-color);
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      width: 100%;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px var(--btn-primary-shadow);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      background: var(--btn-secondary-bg);
+      color: var(--btn-secondary-color);
+      box-shadow: none;
+      margin-top: 10px;
+    }
+
+    .btn-warning {
+      background: #f59e0b;
+      color: #000;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    }
+
+    .btn-danger {
+      background: var(--accent-danger);
+      color: white;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-add {
+      background: var(--accent-blue);
+      color: white;
+      white-space: nowrap;
+      width: auto;
+      padding: 0 20px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
+
+    .btn-disabled {
+      background: #94a3b8 !important;
+      color: #fff !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+      transform: none !important;
+      opacity: 0.6;
+    }
+
+    .player-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 48px;
+      padding: 10px;
+      background: var(--bg-main);
+      border-radius: 10px;
+      border: 1px dashed var(--card-border);
+      align-items: center;
+    }
+
+    .chip {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+
+    .chip-past {
+      background: rgba(59, 130, 246, 0.08);
+      border-color: rgba(59, 130, 246, 0.3);
+      color: var(--accent-blue);
+    }
+
+    .chip-remove {
+      background: none;
+      border: none;
+      color: var(--accent-danger);
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .winner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .btn-winner {
+      background: var(--bg-main);
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+      padding: 14px 10px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-winner.selected {
+      background: var(--accent-green);
+      color: white;
+      border-color: var(--accent-green);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .winner-score-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .btn-winner-score {
+      background: var(--bg-main);
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-winner-score.selected {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-color);
+      border-color: var(--btn-primary-bg);
+      box-shadow: 0 4px 12px var(--btn-primary-shadow);
+    }
+
+    .player-row-aligned {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .btn-player-name-static {
+      background: var(--btn-secondary-bg);
+      color: var(--btn-secondary-color);
+      border: 1px solid var(--card-border);
+      padding: 13px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      min-width: 110px;
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      cursor: default;
+      user-select: none;
+    }
+
+    .player-row-aligned input {
+      flex: 1;
+    }
+
+    .btn-ko-action {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--accent-danger);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 13px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .btn-ko-action:hover {
+      background: var(--accent-danger);
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 15px;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--bg-main);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+
+    .eliminated {
+      opacity: 0.5;
+    }
+
+    .eliminated td {
+      text-decoration: line-through;
+      color: var(--accent-danger);
+    }
+
+    .session-badge {
+      background: var(--bg-main);
+      border: 1px solid var(--card-border);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .winner-banner {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #000;
+      padding: 18px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 17px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25);
+    }
+
+    .log-list {
+      max-height: 180px;
+      overflow-y: auto;
+      background: var(--bg-main);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      border: 1px solid var(--card-border);
+    }
+
+    .log-item {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body class="theme-1">
+
+<div class="container">
+  <!-- HEADER & BARRE SUPÉRIEURE -->
+  <div class="app-header">
+    <h1 class="app-title">♠️ Huit Américain ♣️</h1>
+    <div class="top-actions-bar">
+      <button class="btn-top-action" onclick="openHistoryModal()">📜 Historique Sessions</button>
+      <button class="btn-top-action" style="background: var(--accent-green);" onclick="openPlayersModal()">👤 Gestion des Joueurs</button>
+      <div class="theme-selector-container">
+        <label for="theme-selector">🎨 Style :</label>
+        <select id="theme-selector" class="theme-select" onchange="changeTheme(this.value)">
+          <option value="theme-1">1. Minimaliste Blanc & Noir</option>
+          <option value="theme-2">2. Obsidian Sombre</option>
+          <option value="theme-3">3. Émeraude & Ivoire</option>
+          <option value="theme-4">4. Ambre & Noir</option>
+          <option value="theme-5">5. Améthyste & Blanc</option>
+          <option value="theme-6">6. Sunset & Blanc</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL HISTORIQUE GÉNÉRAL -->
+  <div id="history-modal-card" class="card hidden">
+    <h2>📂 Historique de toutes les Sessions (Cloud)</h2>
+    
+    <!-- CHAMP POUR CRÉER UNE NOUVELLE SESSION DIRECTEMENT DEPUIS L'HISTORIQUE -->
+    <div class="form-group" style="margin-bottom: 15px; background: var(--bg-main); padding: 12px; border-radius: 10px; border: 1px solid var(--card-border);">
+      <label style="margin-bottom: 6px;">➕ Créer / Ajouter une nouvelle session :</label>
+      <div class="row-input">
+        <input type="text" id="history-new-session-name" placeholder="Nom de la session (ex: Tournoi du Vendredi)">
+        <button class="btn btn-add" type="button" onclick="createSessionFromHistory()">Créer</button>
+      </div>
+    </div>
+
+    <!-- RECHERCHE DANS L'HISTORIQUE -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <input type="text" id="history-search-input" placeholder="🔍 Rechercher par nom ou par date..." oninput="filterHistoryList()">
+    </div>
+
+    <div id="history-modal-content" style="max-height: 280px; overflow-y: auto; margin-bottom: 15px;"></div>
+    <button class="btn btn-secondary" onclick="closeHistoryModal()">Fermer</button>
+  </div>
+
+  <!-- MODAL GESTION DES JOUEURS -->
+  <div id="players-modal-card" class="card hidden">
+    <h2>👤 Gestion de tous les Joueurs Enregistrés</h2>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">
+      Renommez ou supprimez un joueur. Le changement sera mis à jour partout en direct.
+    </p>
+    <div id="players-modal-content" style="max-height: 300px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px;"></div>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn" onclick="savePlayersModifications()">💾 Sauvegarder</button>
+      <button class="btn btn-secondary" style="margin-top:0;" onclick="closePlayersModal()">Fermer</button>
+    </div>
+  </div>
+
+  <!-- ÉCRAN 1 : GESTION DES SESSIONS -->
+  <div id="session-section" class="card">
+    <h2>📁 Session de Jeu</h2>
+    <div id="no-session-div">
+      <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+        Aucune session active. Créez une session partagée pour démarrer !
+      </p>
+      
+      <div class="form-group">
+        <label for="session-name">Nom de la Session :</label>
+        <input type="text" id="session-name" placeholder="Ex: Soirée du Samedi">
+      </div>
+
+      <button class="btn" onclick="createSession()">Créer la Session</button>
+    </div>
+
+    <div id="active-session-div" class="hidden">
+      <div class="session-badge">
+        <span id="session-title-display"></span>
+        <button class="btn btn-danger" style="width: auto; padding: 6px 12px; font-size: 12px;" onclick="closeSession()">Clôturer</button>
+      </div>
+
+      <h3 style="margin-bottom: 10px;">Classement Général des Victoires (V)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Joueur</th>
+            <th>Victoires (V)</th>
+          </tr>
+        </thead>
+        <tbody id="session-score-table"></tbody>
+      </table>
+
+      <!-- BOUTONS D'ACTION SUR LA SESSION -->
+      <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+        <!-- BOUTON : CONTINUER LA PARTIE EN COURS -->
+        <button id="btn-resume-game" class="btn btn-warning hidden" onclick="resumeCurrentGame()">▶️ Continuer la Partie en Cours</button>
+        <!-- BOUTON : LANCER UNE NOUVELLE PARTIE -->
+        <button class="btn" onclick="showGameSetup()">🎮 Nouvelle Partie avec ces Joueurs</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉCRAN 2 : CONFIGURATION DE LA PARTIE -->
+  <div id="setup-section" class="card hidden">
+    <h2>⚙️ Configuration de la Partie</h2>
+    
+    <div class="form-group">
+      <label for="threshold-input">Seuil limite de points pour autoriser un nouveau joueur :</label>
+      <input type="number" id="threshold-input" value="60" min="10" max="100">
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+      <label for="player-input">Ajouter un nouveau participant :</label>
+      <div class="row-input">
+        <input type="text" id="player-input" placeholder="Nom du joueur" onkeydown="handleKey(event)">
+        <button class="btn btn-add" type="button" onclick="addInitialPlayer()">Ajouter</button>
+      </div>
+    </div>
+
+    <div class="form-group" id="past-players-setup-group" style="display: none;">
+      <label>Anciens participants (cliquez pour ajouter) :</label>
+      <div id="past-players-setup-chips" class="player-chips"></div>
+    </div>
+
+    <div class="form-group">
+      <label>Participants inscrits (<span id="player-count">0</span>) :</label>
+      <div id="player-chips" class="player-chips"></div>
+    </div>
+
+    <button id="start-btn" class="btn btn-disabled" onclick="startGame()" disabled>🚀 Démarrer la Partie (min. 2)</button>
+    <button class="btn btn-secondary" onclick="backToSession()">⬅️ Retour Session</button>
+  </div>
+
+  <!-- ÉCRAN 3 : JEU EN COURS -->
+  <div id="game-section" class="card hidden">
+    <div id="winner-announcement" class="winner-banner hidden"></div>
+
+    <h2>📊 Tableau des Scores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Joueur</th>
+          <th>Série</th>
+          <th>Score</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody id="game-score-table-body"></tbody>
+    </table>
+
+    <div id="add-midgame-container" style="margin-top: 20px; text-align: center;">
+      <button id="btn-open-add-midgame" class="btn btn-warning" onclick="openAddMidgameModal()">➕ Ajouter de nouveaux participants</button>
+    </div>
+
+    <div id="midgame-add-card" class="card hidden" style="margin-top: 15px; border: 1px dashed var(--accent-blue);">
+      <h3>Ajouter de nouveaux participants en cours</h3>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+        📌 <strong>Règle :</strong> 0 pt (si aucune manche jouée) ou Score Max + 10 pts (si partie entamée). Impossible si un joueur est KO ou a atteint le seuil.
+      </p>
+      <div class="form-group">
+        <div class="row-input">
+          <input type="text" id="midgame-player-input" placeholder="Nom du joueur" onkeydown="handleMidgameKey(event)">
+          <button class="btn btn-add" type="button" onclick="addMidgamePlayerToList()">Ajouter</button>
+        </div>
+      </div>
+
+      <div class="form-group" id="past-players-midgame-group" style="display: none;">
+        <label>Anciens participants :</label>
+        <div id="past-players-midgame-chips" class="player-chips"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Nouveaux joueurs en attente (<span id="midgame-count">0</span>) :</label>
+        <div id="midgame-chips" class="player-chips"></div>
+      </div>
+      <button class="btn" onclick="validateMidgameAddition()">Valider et intégrer</button>
+      <button class="btn btn-secondary" onclick="closeAddMidgameModal()">Annuler</button>
+    </div>
+
+    <div id="round-form-container" style="margin-top: 25px;">
+      <h2>📝 Saisie de la Manche</h2>
+      
+      <div class="form-group">
+        <label>1. Qui a gagné la manche ?</label>
+        <div id="winner-buttons-container" class="winner-grid"></div>
+      </div>
+
+      <div class="form-group">
+        <label>2. Score du vainqueur :</label>
+        <div class="winner-score-toggle">
+          <button type="button" id="btn-score-0" class="btn-winner-score selected" onclick="selectWinnerScore(0)">0 point</button>
+          <button type="button" id="btn-score-32" class="btn-winner-score" onclick="selectWinnerScore(-32)">-32 points</button>
+        </div>
+      </div>
+
+      <div id="other-players-inputs">
+        <label style="margin-bottom: 12px;">3. Points des autres joueurs (ou KO) :</label>
+        <div id="inputs-container"></div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+        <button class="btn" onclick="submitRound()">Valider la Manche</button>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-danger" style="margin-top:0;" onclick="restartGameScores()">🔄 Recommencer</button>
+          <button id="btn-edit-last-round" class="btn btn-warning btn-disabled" style="margin-top:0;" onclick="editPreviousRound()" disabled>✏️ Modifier manche précédente</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary" style="margin-top: 20px;" onclick="resetGameToSetup()">⬅️ Menu Session</button>
+  </div>
+
+  <!-- JOURNAL -->
+  <div id="log-section" class="card hidden">
+    <h2>📜 Journal de la Partie</h2>
+    <div class="log-list" id="log-list"></div>
+  </div>
+</div>
+
+<script>
+  /* ==========================================
+     CONFIGURATION FIREBASE
+     ========================================== */
+  const firebaseConfig = {
+    apiKey: "AIzaSyC2FjUQQMaBzXl5ayOmWwwkw56rBethXB4",
+    authDomain: "m-note-13e16.firebaseapp.com",
+    projectId: "m-note-13e16",
+    storageBucket: "m-note-13e16.firebasestorage.app",
+    messagingSenderId: "111774061305",
+    appId: "1:111774061305:web:e7563dfb65d203e6960828"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  let savedSessions = [];
+  let currentSession = null;
+  let thresholdLimit = 60;
+  let tempPlayers = [];
+  let midgamePlayers = [];
+  let players = [];
+  let roundCount = 0;
+  let selectedWinnerIndex = null;
+  let selectedWinnerScoreValue = 0;
+  let previousRoundSnapshot = null;
+
+  // Synchronisation en temps réel via Firestore
+  db.collection("huit_americain_data").doc("shared_state").onSnapshot((doc) => {
+    if (doc.exists) {
+      const data = doc.data();
+      savedSessions = data.savedSessions || [];
+      if (data.currentSession) {
+        currentSession = data.currentSession;
+        updateUIStateFromContext();
+      }
+    }
+  }, (error) => {
+    console.error("Erreur de synchronisation Firestore : ", error);
+  });
+
+  function syncToCloud() {
+    db.collection("huit_americain_data").doc("shared_state").set({
+      savedSessions: savedSessions,
+      currentSession: currentSession
+    }).catch((error) => {
+      console.error("Erreur d'écriture Firestore : ", error);
+    });
+  }
+
+  // PERSISTANCE LOCALE DE L'ÉCRAN
+  function saveCurrentAppState(screenName) {
+    const state = {
+      activeScreen: screenName,
+      players: players,
+      tempPlayers: tempPlayers,
+      thresholdLimit: thresholdLimit,
+      roundCount: roundCount,
+      previousRoundSnapshot: previousRoundSnapshot
+    };
+    localStorage.setItem('huit_americain_app_state', JSON.stringify(state));
+  }
+
+  function restoreLocalScreenState() {
+    const saved = localStorage.getItem('huit_americain_app_state');
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      if (state.players && state.players.length > 0) players = state.players;
+      if (state.tempPlayers) tempPlayers = state.tempPlayers;
+      if (state.thresholdLimit) thresholdLimit = state.thresholdLimit;
+      if (state.roundCount !== undefined) roundCount = state.roundCount;
+      if (state.previousRoundSnapshot) {
+        previousRoundSnapshot = state.previousRoundSnapshot;
+        enableEditRoundBtn();
+      }
+
+      if (state.activeScreen === 'game' && players.length > 0) {
+        resumeCurrentGame();
+      } else if (state.activeScreen === 'setup') {
+        showGameSetup();
+      }
+    } catch (e) {
+      console.error("Erreur de restauration d'état :", e);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('huit_americain_theme') || 'theme-1';
+    document.body.className = savedTheme;
+    document.getElementById('theme-selector').value = savedTheme;
+
+    setTimeout(() => { restoreLocalScreenState(); }, 400);
+  });
+
+  function changeTheme(themeName) {
+    document.body.className = themeName;
+    localStorage.setItem('huit_americain_theme', themeName);
+  }
+
+  function updateUIStateFromContext() {
+    if (currentSession) {
+      document.getElementById('no-session-div').classList.add('hidden');
+      document.getElementById('active-session-div').classList.remove('hidden');
+      
+      document.getElementById('session-title-display').innerHTML = `
+        📁 <strong>${currentSession.name}</strong> 
+        <span style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-left: 6px; font-weight: bold;">🟢 EN COURS</span>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 3px;">Créée le : ${currentSession.dateStr}</div>
+      `;
+      renderSessionStats();
+      
+      // Afficher le bouton de reprise si des joueurs existent déjà dans la partie active
+      const resumeBtn = document.getElementById('btn-resume-game');
+      if (players && players.length > 0) {
+        resumeBtn.classList.remove('hidden');
+      } else {
+        resumeBtn.classList.add('hidden');
+      }
+    } else {
+      document.getElementById('active-session-div').classList.add('hidden');
+      document.getElementById('no-session-div').classList.remove('hidden');
+      localStorage.removeItem('huit_americain_app_state');
+    }
+  }
+
+  /* --- FONCTION POUR REPRENDRE LA PARTIE EN COURS --- */
+  function resumeCurrentGame() {
+    if (!players || players.length === 0) return;
+    document.getElementById('session-section').classList.add('hidden');
+    document.getElementById('setup-section').classList.add('hidden');
+    document.getElementById('game-section').classList.remove('hidden');
+    document.getElementById('log-section').classList.remove('hidden');
+    renderGameTable();
+    initRoundInputs();
+    saveCurrentAppState('game');
+  }
+
+  /* --- GESTION DES JOUEURS --- */
+  function openPlayersModal() {
+    const container = document.getElementById('players-modal-content');
+    container.innerHTML = '';
+
+    const pastPlayers = getPastPlayersList();
+    if (pastPlayers.length === 0) {
+      container.innerHTML = '<p style="color: var(--text-muted); font-style: italic;">Aucun joueur enregistré pour le moment.</p>';
+    } else {
+      pastPlayers.forEach((name, index) => {
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.gap = '10px';
+        row.style.alignItems = 'center';
+
+        row.innerHTML = `
+          <input type="text" id="edit-player-${index}" value="${name}" data-oldname="${name}" style="flex:1;">
+          <button class="btn btn-danger" style="width: auto; padding: 13px 16px; font-size: 13px;" onclick="removePlayerFromGeneral('${name}')">Supprimer</button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    document.getElementById('players-modal-card').classList.remove('hidden');
+  }
+
+  function closePlayersModal() {
+    document.getElementById('players-modal-card').classList.add('hidden');
+  }
+
+  function savePlayersModifications() {
+    const inputs = document.querySelectorAll('#players-modal-content input[type="text"]');
+    const nameMapping = {};
+
+    inputs.forEach(input => {
+      const oldName = input.getAttribute('data-oldname');
+      const newName = input.value.trim();
+      if (newName && newName !== oldName) {
+        nameMapping[oldName] = newName;
+      }
+    });
+
+    if (currentSession && currentSession.stats) {
+      Object.keys(nameMapping).forEach(oldN => {
+        if (currentSession.stats[oldN] !== undefined) {
+          currentSession.stats[nameMapping[oldN]] = currentSession.stats[oldN];
+          delete currentSession.stats[oldN];
+        }
+      });
+    }
+
+    savedSessions.forEach(sess => {
+      if (sess.stats) {
+        Object.keys(nameMapping).forEach(oldN => {
+          if (sess.stats[oldN] !== undefined) {
+            sess.stats[nameMapping[oldN]] = sess.stats[oldN];
+            delete sess.stats[oldN];
+          }
+        });
+      }
+    });
+
+    if (players && players.length > 0) {
+      players.forEach(p => {
+        if (nameMapping[p.name]) {
+          p.name = nameMapping[p.name];
+        }
+      });
+      renderGameTable();
+      initRoundInputs();
+      saveCurrentAppState('game');
+    }
+
+    if (tempPlayers && tempPlayers.length > 0) {
+      tempPlayers = tempPlayers.map(name => nameMapping[name] || name);
+      renderPlayerChips();
+      renderPastPlayersSetup();
+    }
+    
+    syncToCloud();
+    renderSessionStats();
+    alert("Noms modifiés et mis à jour partout avec succès !");
+    closePlayersModal();
+    openPlayersModal();
+  }
+
+  function removePlayerFromGeneral(nameToRemove) {
+    if (confirm(`Supprimer "${nameToRemove}" des statistiques globales partagées ?`)) {
+      if (currentSession && currentSession.stats) {
+        delete currentSession.stats[nameToRemove];
+      }
+      savedSessions.forEach(sess => {
+        if (sess.stats) delete sess.stats[nameToRemove];
+      });
+      syncToCloud();
+      openPlayersModal();
+    }
+  }
+
+  /* --- HISTORIQUE SESSIONS & CRÉATION DIRECTE --- */
+  function openHistoryModal() {
+    document.getElementById('history-search-input').value = '';
+    document.getElementById('history-new-session-name').value = '';
+    renderHistoryList();
+    document.getElementById('history-modal-card').classList.remove('hidden');
+  }
+
+  function closeHistoryModal() {
+    document.getElementById('history-modal-card').classList.add('hidden');
+  }
+
+  function createSessionFromHistory() {
+    const input = document.getElementById('history-new-session-name');
+    const nameInput = input.value.trim();
+    if (!nameInput) { alert("Veuillez entrer un nom pour la nouvelle session."); return; }
+
+    if (currentSession) {
+      savedSessions.push(currentSession);
+    }
+
+    const now = new Date();
+    currentSession = {
+      name: nameInput,
+      dateStr: now.toLocaleDateString() + ' à ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+      stats: {}
+    };
+
+    players = [];
+    tempPlayers = [];
+    input.value = '';
+    syncToCloud();
+    updateUIStateFromContext();
+    renderHistoryList(document.getElementById('history-search-input').value);
+    alert(`La session "${nameInput}" a été créée et activée !`);
+  }
+
+  function renderHistoryList(filterText = '') {
+    const container = document.getElementById('history-modal-content');
+    container.innerHTML = '';
+    
+    let allSessions = [];
+    if (currentSession) {
+      allSessions.push({ ...currentSession, isActive: true });
+    }
+    savedSessions.forEach(s => {
+      allSessions.push({ ...s, isActive: false });
+    });
+
+    allSessions.reverse();
+
+    const query = filterText.toLowerCase().trim();
+    const filteredSessions = allSessions.filter(sess => {
+      const nameMatch = sess.name && sess.name.toLowerCase().includes(query);
+      const dateMatch = sess.dateStr && sess.dateStr.toLowerCase().includes(query);
+      return nameMatch || dateMatch;
+    });
+
+    if (filteredSessions.length === 0) {
+      container.innerHTML = '<p style="color: var(--text-muted); font-style: italic; text-align: center;">Aucune session trouvée.</p>';
+      return;
+    }
+
+    filteredSessions.forEach((sess) => {
+      const div = document.createElement('div');
+      div.style.background = 'var(--bg-main)';
+      div.style.padding = '12px';
+      div.style.borderRadius = '10px';
+      div.style.marginBottom = '10px';
+      div.style.border = '1px solid var(--card-border)';
+
+      let statsHtml = sess.stats && Object.keys(sess.stats).length > 0 
+        ? Object.entries(sess.stats).map(([p, v]) => `<strong>${p}</strong>: V${v}`).join(' | ') 
+        : 'Aucune victoire';
+
+      let activeTag = sess.isActive ? ' <span style="color: var(--accent-green); font-weight: bold;">(🟢 En cours)</span>' : '';
+
+      div.innerHTML = `
+        <div style="font-size: 14px; font-weight: bold; margin-bottom: 4px;">${sess.name}${activeTag}</div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Date : ${sess.dateStr || 'Inconnue'}</div>
+        <div style="font-size: 13px;">${statsHtml}</div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function filterHistoryList() {
+    const query = document.getElementById('history-search-input').value;
+    renderHistoryList(query);
+  }
+
+  function getPastPlayersList() {
+    const playerSet = new Set();
+    savedSessions.forEach(s => { 
+      if (s.stats) Object.keys(s.stats).forEach(p => playerSet.add(p)); 
+    });
+    if (currentSession && currentSession.stats) {
+      Object.keys(currentSession.stats).forEach(p => playerSet.add(p));
+    }
+    if (players && players.length > 0) {
+      players.forEach(p => playerSet.add(p.name));
+    }
+    return Array.from(playerSet);
+  }
+
+  function log(message) {
+    const logList = document.getElementById('log-list');
+    const item = document.createElement('div');
+    item.className = 'log-item';
+    item.innerHTML = message;
+    logList.prepend(item);
+  }
+
+  function createSession() {
+    const nameInput = document.getElementById('session-name').value.trim();
+    if (!nameInput) { alert("Veuillez entrer un nom pour la session."); return; }
+    
+    const now = new Date();
+    currentSession = {
+      name: nameInput,
+      dateStr: now.toLocaleDateString() + ' à ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+      stats: {}
+    };
+
+    players = [];
+    tempPlayers = [];
+    syncToCloud();
+    updateUIStateFromContext();
+  }
+
+  function closeSession() {
+    if (confirm("Clôturer cette session partagée ?")) {
+      if (currentSession) { savedSessions.push(currentSession); }
+      currentSession = null;
+      players = [];
+      tempPlayers = [];
+      localStorage.removeItem('huit_americain_app_state');
+      syncToCloud();
+      document.getElementById('session-name').value = '';
+      document.getElementById('game-section').classList.add('hidden');
+      document.getElementById('setup-section').classList.add('hidden');
+      document.getElementById('log-section').classList.add('hidden');
+      updateUIStateFromContext();
+    }
+  }
+
+  function renderSessionStats() {
+    const tbody = document.getElementById('session-score-table');
+    if (!tbody || !currentSession) return;
+    tbody.innerHTML = '';
+    const keys = Object.keys(currentSession.stats || {});
+    if (keys.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="2" style="color: var(--text-muted); font-style: italic;">Aucune victoire enregistrée.</td></tr>`;
+      return;
+    }
+    keys.sort((a, b) => currentSession.stats[b] - currentSession.stats[a]);
+    keys.forEach(name => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td><strong>${name}</strong></td><td><span style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); padding: 3px 10px; border-radius: 12px; font-weight: bold;">V${currentSession.stats[name]}</span></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function showGameSetup() {
+    document.getElementById('setup-section').classList.remove('hidden');
+    document.getElementById('session-section').classList.add('hidden');
+    
+    if (!currentSession) {
+      currentSession = { name: "Session Rapide", dateStr: new Date().toLocaleDateString(), stats: {} };
+    }
+
+    tempPlayers = Object.keys(currentSession.stats || {});
+    document.getElementById('player-input').value = '';
+    renderPlayerChips();
+    renderPastPlayersSetup();
+    saveCurrentAppState('setup');
+  }
+
+  function backToSession() {
+    document.getElementById('setup-section').classList.add('hidden');
+    document.getElementById('session-section').classList.remove('hidden');
+    saveCurrentAppState('session');
+    updateUIStateFromContext();
+  }
+
+  function handleKey(event) { if (event.key === 'Enter') { event.preventDefault(); addInitialPlayer(); } }
+
+  function addInitialPlayer() {
+    const input = document.getElementById('player-input');
+    const name = input.value.trim();
+    if (!name || tempPlayers.includes(name)) return;
+    
+    if (!currentSession) {
+      currentSession = { name: "Session Rapide", dateStr: new Date().toLocaleDateString(), stats: {} };
+    }
+    
+    tempPlayers.push(name);
+    if (currentSession.stats[name] === undefined) currentSession.stats[name] = 0;
+    input.value = "";
+    input.focus();
+    renderPlayerChips();
+    renderPastPlayersSetup();
+  }
+
+  function removeInitialPlayer(index) { tempPlayers.splice(index, 1); renderPlayerChips(); renderPastPlayersSetup(); }
+
+  function addPastPlayerToGame(name) {
+    if (!tempPlayers.includes(name)) {
+      if (!currentSession) {
+        currentSession = { name: "Session Rapide", dateStr: new Date().toLocaleDateString(), stats: {} };
+      }
+      tempPlayers.push(name);
+      if (currentSession.stats[name] === undefined) currentSession.stats[name] = 0;
+      renderPlayerChips();
+      renderPastPlayersSetup();
+    }
+  }
+
+  function renderPastPlayersSetup() {
+    const group = document.getElementById('past-players-setup-group');
+    const container = document.getElementById('past-players-setup-chips');
+    const availablePast = getPastPlayersList().filter(p => !tempPlayers.includes(p));
+    if (availablePast.length === 0) { group.style.display = 'none'; return; }
+    group.style.display = 'block';
+    container.innerHTML = '';
+    availablePast.forEach(name => {
+      const chip = document.createElement('div');
+      chip.className = 'chip chip-past';
+      chip.innerHTML = `<span>+ ${name}</span>`;
+      chip.onclick = () => addPastPlayerToGame(name);
+      container.appendChild(chip);
+    });
+  }
+
+  function renderPlayerChips() {
+    const container = document.getElementById('player-chips');
+    document.getElementById('player-count').textContent = tempPlayers.length;
+    const startBtn = document.getElementById('start-btn');
+
+    if (tempPlayers.length === 0) {
+      container.innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Aucun joueur...</span>';
+    } else {
+      container.innerHTML = '';
+      tempPlayers.forEach((name, index) => {
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        chip.innerHTML = `<span>${name}</span><button class="chip-remove" type="button" onclick="removeInitialPlayer(${index})">&times;</button>`;
+        container.appendChild(chip);
+      });
+    }
+
+    if (tempPlayers.length >= 2) {
+      startBtn.classList.remove('btn-disabled'); startBtn.removeAttribute('disabled');
+    } else {
+      startBtn.classList.add('btn-disabled'); startBtn.setAttribute('disabled', 'true');
+    }
+  }
+
+  function startGame() {
+    if (tempPlayers.length < 2) return;
+    thresholdLimit = parseInt(document.getElementById('threshold-input').value, 10) || 60;
+    players = tempPlayers.map(name => ({ name, score: 0, winStreak: 0, eliminated: false }));
+    roundCount = 0;
+    previousRoundSnapshot = null;
+    disableEditRoundBtn();
+
+    document.getElementById('setup-section').classList.add('hidden');
+    document.getElementById('game-section').classList.remove('hidden');
+    document.getElementById('log-section').classList.remove('hidden');
+    document.getElementById('log-list').innerHTML = '';
+    document.getElementById('winner-announcement').classList.add('hidden');
+    document.getElementById('round-form-container').classList.remove('hidden');
+
+    log("🎮 Partie démarrée avec : " + tempPlayers.join(', '));
+    renderGameTable();
+    initRoundInputs();
+    saveCurrentAppState('game');
+  }
+
+  function renderGameTable() {
+    const tbody = document.getElementById('game-score-table-body');
+    tbody.innerHTML = '';
+    players.forEach(player => {
+      const tr = document.createElement('tr');
+      if (player.eliminated) tr.className = 'eliminated';
+      tr.innerHTML = `<td><strong>${player.name}</strong></td><td>${player.winStreak > 0 ? player.winStreak + ' 🔥' : '-'}</td><td><strong>${player.score}</strong> pts</td><td>${player.eliminated ? '❌ KO' : '✅ En jeu'}</td>`;
+      tbody.appendChild(tr);
+    });
+    checkGameWinner();
+    checkMidgameAvailability();
+  }
+
+  function selectWinnerScore(val) {
+    selectedWinnerScoreValue = val;
+    document.getElementById('btn-score-0').classList.toggle('selected', val === 0);
+    document.getElementById('btn-score-32').classList.toggle('selected', val === -32);
+  }
+
+  function initRoundInputs() {
+    const active = players.filter(p => !p.eliminated);
+    if (active.length > 0) selectedWinnerIndex = players.indexOf(active[0]);
+    selectWinnerScore(0);
+    renderWinnerButtons();
+  }
+
+  function renderWinnerButtons() {
+    const container = document.getElementById('winner-buttons-container');
+    container.innerHTML = '';
+    players.forEach((player, index) => {
+      if (!player.eliminated) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-winner' + (index === selectedWinnerIndex ? ' selected' : '');
+        btn.textContent = player.name;
+        btn.onclick = () => selectWinner(index);
+        container.appendChild(btn);
+      }
+    });
+    renderOtherInputs();
+  }
+
+  function selectWinner(index) {
+    selectedWinnerIndex = index;
+    document.querySelectorAll('.btn-winner').forEach(btn => {
+      btn.classList.toggle('selected', btn.textContent === players[index].name);
+    });
+    renderOtherInputs();
+  }
+
+  function renderOtherInputs() {
+    const container = document.getElementById('inputs-container');
+    container.innerHTML = '';
+    players.forEach((player, index) => {
+      if (!player.eliminated && index !== selectedWinnerIndex) {
+        const row = document.createElement('div');
+        row.className = 'player-row-aligned';
+        row.innerHTML = `<button type="button" class="btn-player-name-static">${player.name}</button><input type="number" id="score-${index}" placeholder="Points"><button type="button" class="btn-ko-action" onclick="markPlayerKO(${index})">KO</button>`;
+        container.appendChild(row);
+      }
+    });
+  }
+
+  function markPlayerKO(index) {
+    saveSnapshotForUndo();
+    players[index].eliminated = true;
+    log(`🚨 <strong>${players[index].name}</strong> est <strong>KO</strong> !`);
+    renderGameTable();
+    initRoundInputs();
+    saveCurrentAppState('game');
+  }
+
+  function submitRound() {
+    if (selectedWinnerIndex === null || players[selectedWinnerIndex].eliminated) return;
+    const scoresEntered = {};
+    let hasError = false;
+
+    players.forEach((player, i) => {
+      if (!player.eliminated && i !== selectedWinnerIndex) {
+        const inputElem = document.getElementById(`score-${i}`);
+        if (!inputElem || inputElem.value === "") { alert(`Entrez les points pour ${player.name}.`); hasError = true; return; }
+        scoresEntered[i] = parseInt(inputElem.value, 10);
+      }
+    });
+    if (hasError) return;
+
+    saveSnapshotForUndo();
+
+    roundCount++;
+    const winner = players[selectedWinnerIndex];
+    winner.winStreak += 1;
+    let ptsToAdd = selectedWinnerScoreValue;
+    if (winner.winStreak === 3) { ptsToAdd -= 10; winner.winStreak = 0; log(`🎉 Bonus -10 pour ${winner.name} (3 victoires) !`); }
+    winner.score += ptsToAdd;
+
+    players.forEach((player, i) => {
+      if (!player.eliminated && i !== selectedWinnerIndex) {
+        player.winStreak = 0;
+        player.score += scoresEntered[i];
+      }
+    });
+
+    players.forEach(p => {
+      if (!p.eliminated) {
+        if (p.score === 100) { p.score -= 10; log(`🎯 ${p.name} atteint 100 pts -> Bonus -10 (90 pts).`); }
+        if (p.score > 100) { p.eliminated = true; log(`🚨 ${p.name} dépasse 100 pts (${p.score}) et est ÉLIMINÉ !`); }
+      }
+    });
+
+    renderGameTable();
+    initRoundInputs();
+    saveCurrentAppState('game');
+  }
+
+  /* MODIFICATION DE LA MANCHE PRÉCÉDENTE (UNDO) */
+  function saveSnapshotForUndo() {
+    previousRoundSnapshot = JSON.stringify(players);
+    enableEditRoundBtn();
+  }
+
+  function enableEditRoundBtn() {
+    const btn = document.getElementById('btn-edit-last-round');
+    if (btn) { btn.classList.remove('btn-disabled'); btn.removeAttribute('disabled'); }
+  }
+
+  function disableEditRoundBtn() {
+    const btn = document.getElementById('btn-edit-last-round');
+    if (btn) { btn.classList.add('btn-disabled'); btn.setAttribute('disabled', 'true'); }
+  }
+
+  function editPreviousRound() {
+    if (!previousRoundSnapshot) return;
+    if (confirm("Annuler et modifier les notes de la manche précédente ?")) {
+      players = JSON.parse(previousRoundSnapshot);
+      previousRoundSnapshot = null;
+      disableEditRoundBtn();
+      log("✏️ Manche précédente annulée. Vous pouvez resaisir les notes.");
+      renderGameTable();
+      initRoundInputs();
+      saveCurrentAppState('game');
+    }
+  }
+
+  /* --- AJOUT EN COURS DE PARTIE --- */
+  function checkMidgameAvailability() {
+    const container = document.getElementById('add-midgame-container');
+    const hasAnyKO = players.some(p => p.eliminated);
+    const anyAboveThreshold = players.some(p => p.score >= thresholdLimit);
+
+    if (hasAnyKO || anyAboveThreshold) {
+      container.classList.add('hidden');
+    } else {
+      container.classList.remove('hidden');
+    }
+  }
+
+  function openAddMidgameModal() {
+    midgamePlayers = [];
+    document.getElementById('midgame-add-card').classList.remove('hidden');
+    renderMidgameChips();
+    renderPastPlayersMidgame();
+  }
+
+  function closeAddMidgameModal() {
+    document.getElementById('midgame-add-card').classList.add('hidden');
+  }
+
+  function handleMidgameKey(event) { if (event.key === 'Enter') { event.preventDefault(); addMidgamePlayerToList(); } }
+
+  function addMidgamePlayerToList() {
+    const input = document.getElementById('midgame-player-input');
+    const name = input.value.trim();
+    if (!name || players.some(p => p.name === name) || midgamePlayers.includes(name)) return;
+    midgamePlayers.push(name);
+    if (currentSession && currentSession.stats && currentSession.stats[name] === undefined) {
+      currentSession.stats[name] = 0;
+    }
+    input.value = "";
+    renderMidgameChips();
+    renderPastPlayersMidgame();
+  }
+
+  function removeMidgamePlayer(index) {
+    midgamePlayers.splice(index, 1);
+    renderMidgameChips();
+    renderPastPlayersMidgame();
+  }
+
+  function renderMidgameChips() {
+    const container = document.getElementById('midgame-chips');
+    document.getElementById('midgame-count').textContent = midgamePlayers.length;
+    container.innerHTML = '';
+    if (midgamePlayers.length === 0) {
+      container.innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Aucun joueur sélectionné...</span>';
+    } else {
+      midgamePlayers.forEach((name, index) => {
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        chip.innerHTML = `<span>${name}</span><button class="chip-remove" onclick="removeMidgamePlayer(${index})">&times;</button>`;
+        container.appendChild(chip);
+      });
+    }
+  }
+
+  function renderPastPlayersMidgame() {
+    const group = document.getElementById('past-players-midgame-group');
+    const container = document.getElementById('past-players-midgame-chips');
+    const existingNames = players.map(p => p.name);
+    const availablePast = getPastPlayersList().filter(p => !existingNames.includes(p) && !midgamePlayers.includes(p));
+    
+    if (availablePast.length === 0) { group.style.display = 'none'; return; }
+    group.style.display = 'block';
+    container.innerHTML = '';
+    availablePast.forEach(name => {
+      const chip = document.createElement('div');
+      chip.className = 'chip chip-past';
+      chip.innerHTML = `<span>+ ${name}</span>`;
+      chip.onclick = () => { midgamePlayers.push(name); renderMidgameChips(); renderPastPlayersMidgame(); };
+      container.appendChild(chip);
+    });
+  }
+
+  function validateMidgameAddition() {
+    if (midgamePlayers.length === 0) return;
+
+    let entryScore = 0;
+    if (roundCount === 0) {
+      entryScore = 0;
+    } else {
+      const highestScore = Math.max(...players.map(p => p.score));
+      entryScore = highestScore + 10;
+    }
+
+    midgamePlayers.forEach(name => {
+      players.push({ name, score: entryScore, winStreak: 0, eliminated: false });
+      log(`➕ <strong>${name}</strong> rejoint la partie (Score attribué : <strong>${entryScore} pts</strong>).`);
+    });
+
+    closeAddMidgameModal();
+    renderGameTable();
+    initRoundInputs();
+    saveCurrentAppState('game');
+  }
+
+  function checkGameWinner() {
+    const active = players.filter(p => !p.eliminated);
+    if (active.length === 1 && players.length > 1) {
+      const winner = active[0];
+      document.getElementById('winner-announcement').innerHTML = `👑 GAGNANT : ${winner.name.toUpperCase()} ! 👑`;
+      document.getElementById('winner-announcement').classList.remove('hidden');
+      document.getElementById('round-form-container').classList.add('hidden');
+      
+      if (currentSession) {
+        currentSession.stats[winner.name] = (currentSession.stats[winner.name] || 0) + 1;
+        syncToCloud();
+      }
+    }
+  }
+
+  function restartGameScores() {
+    if (confirm("Recommencer la partie à zéro ?")) {
+      players.forEach(p => { p.score = 0; p.winStreak = 0; p.eliminated = false; });
+      roundCount = 0;
+      previousRoundSnapshot = null;
+      disableEditRoundBtn();
+      document.getElementById('round-form-container').classList.remove('hidden');
+      document.getElementById('winner-announcement').classList.add('hidden');
+      renderGameTable();
+      initRoundInputs();
+      saveCurrentAppState('game');
+    }
+  }
+
+  function resetGameToSetup() {
+    document.getElementById('game-section').classList.add('hidden');
+    document.getElementById('log-section').classList.add('hidden');
+    document.getElementById('session-section').classList.remove('hidden');
+    saveCurrentAppState('session');
+    updateUIStateFromContext();
+  }
+
+  // Enregistrement Service Worker PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
+    });
+  }
+</script>
+</body>
+</html>

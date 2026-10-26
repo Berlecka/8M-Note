@@ -1,0 +1,1 @@
+const CACHE_NAME = 'huit-americain-v2'; // <--- Modifie la version ici
